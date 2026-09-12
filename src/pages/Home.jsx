@@ -4,7 +4,6 @@ import { Monitor, ShieldCheck, Wrench, ArrowRight, Phone } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import ProductCard from '../components/ProductCard';
 import heroImage from '../assets/hero-image.png';
-import cctvImage from '../assets/cctv-category.jpg';
 
 export default function Home() {
   const [latestProducts, setLatestProducts] = useState([]);
@@ -67,6 +66,51 @@ export default function Home() {
         </div>
       </section>
 
+      
+      
+
+      {/* Categories */}
+      <section className="section-alt" style={{ background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-main))' }}>
+        <div className="container">
+          <div className="flex justify-between items-end mb-8">
+            <div>
+              <h2 className="h2 text-primary-color">Our Product Range</h2>
+              <p className="text-secondary mt-2">Explore our extensive catalog of genuine IT hardware.</p>
+            </div>
+          </div>
+          
+          <div className="grid-3">
+            {[
+              { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800', desc: 'Business, Gaming & Student Laptops' },
+              { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800', desc: 'Custom Builds & Branded Towers' },
+              { title: 'CCTV Systems', slug: 'cctv', img: '/cctv-category.jpg', desc: 'HD Security & Surveillance' }
+            ].map((cat) => (
+              <Link to={`/category/${cat.slug}`} key={cat.slug} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                <div style={{ height: '220px', overflow: 'hidden' }}>
+                  <img 
+                    src={cat.img} 
+                    alt={cat.title} 
+                    onError={(e) => {
+                      if (cat.slug === 'cctv') {
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=800';
+                      }
+                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} 
+                    className="hover-scale" 
+                  />
+                </div>
+                <div style={{ padding: '1.5rem' }}>
+                  <h3 className="h3 text-primary-color mb-1">{cat.title}</h3>
+                  <p className="text-secondary mb-4">{cat.desc}</p>
+                  <span className="font-bold text-secondary-color flex items-center gap-2">
+                    Browse Catalog <ArrowRight size={16} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Services/Features */}
       <section className="section container">
         <div className="text-center page-header">
@@ -90,40 +134,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Categories */}
-      <section className="section-alt" style={{ background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-main))' }}>
-        <div className="container">
-          <div className="flex justify-between items-end mb-8">
-            <div>
-              <h2 className="h2 text-primary-color">Our Product Range</h2>
-              <p className="text-secondary mt-2">Explore our extensive catalog of genuine IT hardware.</p>
-            </div>
-          </div>
-          
-          <div className="grid-3">
-            {[
-              { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800', desc: 'Business, Gaming & Student Laptops' },
-              { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800', desc: 'Custom Builds & Branded Towers' },
-              { title: 'CCTV Systems', slug: 'cctv', img: cctvImage, desc: 'HD Security & Surveillance' }
-            ].map((cat) => (
-              <Link to={`/category/${cat.slug}`} key={cat.slug} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                <div style={{ height: '220px', overflow: 'hidden' }}>
-                  <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} className="hover-scale" />
-                </div>
-                <div style={{ padding: '1.5rem' }}>
-                  <h3 className="h3 text-primary-color mb-1">{cat.title}</h3>
-                  <p className="text-secondary mb-4">{cat.desc}</p>
-                  <span className="font-bold text-secondary-color flex items-center gap-2">
-                    Browse Catalog <ArrowRight size={16} />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Latest Arrivals */}
       <section className="section container">
         <div className="page-header text-center">

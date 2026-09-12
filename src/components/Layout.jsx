@@ -118,8 +118,37 @@ export default function Layout() {
             </ul>
           </div>
         </div>
-        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
-          <p className="text-secondary" style={{ fontSize: '0.875rem' }}>© {new Date().getFullYear()} Best Computers. All rights reserved.</p>
+        <div style={{ 
+          padding: '1.5rem 1.5rem', 
+          borderTop: '1px solid var(--border-color)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '1rem',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <p className="text-secondary" style={{ fontSize: '0.875rem' }}>
+            © {new Date().getFullYear()} Best Computers. All rights reserved.
+          </p>
+          <p className="text-secondary" style={{ fontSize: '0.875rem' }}>
+            Powered by{' '}
+            <a 
+              href="https://www.zeonytechnologies.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ 
+                color: 'var(--accent-primary)', 
+                fontWeight: 600, 
+                textDecoration: 'none' 
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+              onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+            >
+              Zeony Technologies
+            </a>
+          </p>
         </div>
       </footer>
 

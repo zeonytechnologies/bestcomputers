@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Monitor, ShieldCheck, Wrench, ArrowRight, Phone } from 'lucide-react';
+import { Monitor, ShieldCheck, Wrench, ArrowRight, Phone, Star } from 'lucide-react';
 import heroImage from '../assets/hero-image.png';
 
 // Swiper imports
@@ -121,6 +121,115 @@ export default function Home() {
               <p className="text-secondary">{feature.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Google Reviews */}
+      <section className="section-alt" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div className="text-center page-header mb-8">
+            <h2 className="h2 text-primary-color mb-2">What Our Customers Say</h2>
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <span style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--text-primary)', lineHeight: 1 }}>4.4</span>
+              <div className="flex-col" style={{ alignItems: 'flex-start' }}>
+                <div className="flex gap-1 mb-1">
+                  {[1, 2, 3, 4, 5].map(star => (
+                    <Star key={star} size={20} fill={star <= 4 ? "#fbbc04" : "url(#half-star)"} color={star <= 4 ? "#fbbc04" : "#e0e0e0"} strokeWidth={1} />
+                  ))}
+                </div>
+                <span className="text-muted font-medium" style={{ fontSize: '0.85rem' }}>Google Reviews</span>
+              </div>
+            </div>
+          </div>
+
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 }
+            }}
+            autoplay={{ delay: 0, disableOnInteraction: false }}
+            speed={6000}
+            loop={true}
+            freeMode={true}
+            modules={[Autoplay, FreeMode]}
+            className="continuous-slider"
+            style={{ paddingBottom: '2rem' }}
+          >
+            {[
+              {
+                name: 'AP',
+                meta: 'Local Guide · 6 reviews · 7 photos',
+                time: '6 months ago',
+                text: "Purchased Computers for my office recently. Rate is very reasonable, they’re giving good support after sales as well.",
+                avatarColor: '#34a853'
+              },
+              {
+                name: 'Muhammed',
+                meta: '4 reviews · 3 photos',
+                time: '8 months ago',
+                text: "I am looking lost 6 month gaming laptop but I am searching Amazon on Flipkart one of the best shop in Hosur is given laptop i7 13th generation laptop with 6 GB 3050 graph is card is given compare this one lakh 10000 in online but he is selling 95000 he is arrange and give one or two days thanks to best computer one of the best computer shop",
+                avatarColor: '#ea4335'
+              },
+              {
+                name: 'Pavan Kumar',
+                meta: '1 review · 1 photo',
+                time: '8 months ago',
+                text: "I am buying him gaming system for 58000 is given best price and given the good explanation for us thanks to best computer I am comepare to Bangalore and Chennai market is given best price and super warranty and he is front of me install and assemble all the system and given thanks to best computers",
+                avatarColor: '#fbbc04'
+              },
+              {
+                name: 'yeswanth yeshu',
+                meta: '3 reviews · 3 photos',
+                time: '9 months ago',
+                text: "I am buying Dell latitude laptop he is given one of the wonderful price compared to some other shop we are went SP road Chennai and Bangalore but never on given warranty for current laptop but he is given good suggestion and explanation thanks to best computers like this you want",
+                avatarColor: '#4285f4'
+              },
+              {
+                name: 'Seraladhan',
+                meta: '2 reviews · 5 photos',
+                time: 'a year ago',
+                text: "One of the best laptop shop.In hosur, it is given best rate and quality of service with best service support is given five things of accessories i went many more shops in hosur We all are said telling too much of cost lapped up, but he's given super price and super speeds too.Response time is best computers hosur",
+                avatarColor: '#34a853'
+              }
+            ].map((review, idx) => (
+              <SwiperSlide key={idx} style={{ height: 'auto' }}>
+                <div className="card glass-panel flex-col" style={{ height: '100%', padding: '1.5rem', textAlign: 'left', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-main)' }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: review.avatarColor, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.2rem', flexShrink: 0 }}>
+                      {review.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-primary-color" style={{ fontSize: '0.95rem', lineHeight: 1.2 }}>{review.name}</h4>
+                      <p className="text-muted" style={{ fontSize: '0.75rem', marginTop: '2px' }}>{review.meta}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map(star => (
+                        <Star key={star} size={14} fill="#fbbc04" color="#fbbc04" strokeWidth={1} />
+                      ))}
+                    </div>
+                    <span className="text-muted" style={{ fontSize: '0.8rem' }}>{review.time}</span>
+                  </div>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem', flex: 1, display: '-webkit-box', WebkitLineClamp: 6, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {review.text}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+          <svg width="0" height="0">
+            <defs>
+              <linearGradient id="half-star" x1="0" x2="100%" y1="0" y2="0">
+                <stop offset="40%" stopColor="#fbbc04" />
+                <stop offset="40%" stopColor="#e0e0e0" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
       </section>
 

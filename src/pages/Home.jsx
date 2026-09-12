@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Monitor, ShieldCheck, Wrench, ArrowRight, Phone } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import ProductCard from '../components/ProductCard';
-import logo from '../assets/Best-computer-logo.webp';
 import heroImage from '../assets/hero-image.png';
+import cctvImage from '../assets/cctv-category.jpg';
 
 export default function Home() {
   const [latestProducts, setLatestProducts] = useState([]);
@@ -105,7 +105,7 @@ export default function Home() {
             {[
               { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800', desc: 'Business, Gaming & Student Laptops' },
               { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800', desc: 'Custom Builds & Branded Towers' },
-              { title: 'CCTV Systems', slug: 'cctv', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800', desc: 'HD Security & Surveillance' }
+              { title: 'CCTV Systems', slug: 'cctv', img: cctvImage, desc: 'HD Security & Surveillance' }
             ].map((cat) => (
               <Link to={`/category/${cat.slug}`} key={cat.slug} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 <div style={{ height: '220px', overflow: 'hidden' }}>

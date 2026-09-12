@@ -1,34 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Monitor, ShieldCheck, Wrench, ArrowRight, Phone } from 'lucide-react';
-import { supabase } from '../lib/supabase';
-import ProductCard from '../components/ProductCard';
 import heroImage from '../assets/hero-image.png';
 
+// Swiper imports
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, FreeMode } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+
 export default function Home() {
-  const [latestProducts, setLatestProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const { data, error } = await supabase
-          .from('products')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(4);
-        
-        if (error) throw error;
-        setLatestProducts(data || []);
-      } catch (err) {
-        console.error('Error fetching latest products:', err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProducts();
-  }, []);
-
   return (
     <div>
       {/* Hero Section */}
@@ -66,9 +47,6 @@ export default function Home() {
         </div>
       </section>
 
-      
-      
-
       {/* Categories */}
       <section className="section-alt" style={{ background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-main))' }}>
         <div className="container">
@@ -79,14 +57,28 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="grid-3">
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
+            }}
+            autoplay={{ delay: 0, disableOnInteraction: false }}
+            speed={5000}
+            loop={true}
+            freeMode={true}
+            modules={[Autoplay, FreeMode]}
+            className="category-swiper continuous-slider"
+            style={{ paddingBottom: '3rem' }}
+          >
             {[
-              { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800', desc: 'Business, Gaming & Student Laptops' },
-              { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800', desc: 'Custom Builds & Branded Towers' },
-              { title: 'CCTV Systems', slug: 'cctv', img: '/cctv-category.jpg', desc: 'HD Security & Surveillance' }
+              { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800' },
+              { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800' },
+              { title: 'CCTV Systems', slug: 'cctv', img: '/cctv-category.jpg' }
             ].map((cat) => (
-              <Link to={`/category/${cat.slug}`} key={cat.slug} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                <div style={{ height: '220px', overflow: 'hidden' }}>
+              <SwiperSlide key={cat.slug}>
+                <Link to={`/category/${cat.slug}`} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', height: '300px', position: 'relative' }}>
                   <img 
                     src={cat.img} 
                     alt={cat.title} 
@@ -95,22 +87,19 @@ export default function Home() {
                         e.currentTarget.src = 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=800';
                       }
                     }}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} 
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'var(--bg-secondary)' }} 
                     className="hover-scale" 
                   />
-                </div>
-                <div style={{ padding: '1.5rem' }}>
-                  <h3 className="h3 text-primary-color mb-1">{cat.title}</h3>
-                  <p className="text-secondary mb-4">{cat.desc}</p>
-                  <span className="font-bold text-secondary-color flex items-center gap-2">
-                    Browse Catalog <ArrowRight size={16} />
-                  </span>
-                </div>
-              </Link>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
+                    <h3 className="h3" style={{ color: 'white', marginBottom: 0 }}>{cat.title}</h3>
+                  </div>
+                </Link>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
+
       {/* Services/Features */}
       <section className="section container">
         <div className="text-center page-header">
@@ -123,7 +112,7 @@ export default function Home() {
         <div className="grid-3 mt-8">
           {[
             { icon: <Monitor size={48} color="var(--accent-primary)" strokeWidth={1.5} />, title: 'Expert Consultation', desc: 'Not sure what specs you need? Our experts will guide you to the perfect machine for your workload and budget.' },
-            { icon: <ShieldCheck size={48} color="var(--accent-secondary)" strokeWidth={1.5} />, title: 'Trusted Warranty', desc: 'All products come with official brand warranties. Plus, we handle the RMA process so you don\'t have to worry.' },
+            { icon: <ShieldCheck size={48} color="var(--accent-secondary)" strokeWidth={1.5} />, title: 'Trusted Warranty', desc: "All products come with official brand warranties. Plus, we handle the RMA process so you don't have to worry." },
             { icon: <Wrench size={48} color="var(--accent-primary)" strokeWidth={1.5} />, title: 'Professional Setup', desc: 'From clean OS installations on new PCs to complete wiring and setup for multi-camera CCTV networks.' }
           ].map((feature, idx) => (
             <div key={idx} className="card glass-panel" style={{ padding: '2.5rem 2rem', textAlign: 'center', borderTop: `4px solid ${idx === 1 ? 'var(--accent-secondary)' : 'var(--accent-primary)'}` }}>
@@ -134,30 +123,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      {/* Latest Arrivals */}
-      <section className="section container">
-        <div className="page-header text-center">
-          <h2 className="h2 text-primary-color">Recently Added</h2>
-          <p className="text-secondary mt-2">Check out the newest stock in our Hosur showroom.</p>
-        </div>
-        
-        {loading ? (
-          <p className="text-center text-muted">Loading...</p>
-        ) : latestProducts.length > 0 ? (
-          <div className="grid-4">
-            {latestProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-muted text-center" style={{ padding: '2rem 0' }}>No products available yet.</p>
-        )}
-        
-        <div className="text-center mt-12">
-          <Link to="/contact" className="btn btn-secondary">Looking for something specific? Contact Us</Link>
-        </div>
-      </section>
-      
+
       {/* CTA & Location Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-main)', position: 'relative' }}>
         <div className="container">
@@ -193,6 +159,8 @@ export default function Home() {
         .hero-buttons { display: flex; gap: 1rem; }
         .hero-img-wrapper:hover { transform: perspective(1000px) rotateY(0deg) !important; }
         .btn-hero-outline:hover { background-color: var(--accent-primary); color: #FFFFFF !important; }
+        .swiper-pagination-bullet-active { background: var(--accent-primary) !important; }
+        .swiper-button-next, .swiper-button-prev { color: var(--accent-primary) !important; }
         @media (max-width: 768px) {
           .hero-flex { flex-direction: column; text-align: center; gap: 2rem !important; padding: 4rem 1.5rem !important; }
           .hero-buttons { flex-direction: column; width: 100%; }
@@ -207,3 +175,4 @@ export default function Home() {
     </div>
   );
 }
+

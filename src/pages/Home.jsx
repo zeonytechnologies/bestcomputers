@@ -33,34 +33,34 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)', position: 'relative', overflow: 'hidden' }}>
         {/* Dynamic Background Elements */}
-        <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(26,99,165,0.4) 0%, rgba(26,99,165,0) 70%)', filter: 'blur(60px)', zIndex: 0 }}></div>
-        <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(243,112,33,0.3) 0%, rgba(243,112,33,0) 70%)', filter: 'blur(60px)', zIndex: 0 }}></div>
+        <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0) 70%)', filter: 'blur(60px)', zIndex: 0 }}></div>
+        <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(249,115,22,0) 70%)', filter: 'blur(60px)', zIndex: 0 }}></div>
 
         <div className="container hero-flex" style={{ position: 'relative', padding: '6rem 1.5rem', display: 'flex', alignItems: 'center', minHeight: '650px', gap: '3rem', zIndex: 10 }}>
           
           <div style={{ flex: '1 1 50%', zIndex: 10 }}>
-            <div style={{ display: 'inline-block', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.5rem 1.25rem', borderRadius: 'var(--radius-full)', marginBottom: '1.5rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-              <span className="font-bold" style={{ color: '#F37021', fontSize: '0.875rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>IT Services & Solutions in Hosur</span>
+            <div style={{ display: 'inline-block', background: 'rgba(59, 130, 246, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(59, 130, 246, 0.2)', padding: '0.5rem 1.25rem', borderRadius: 'var(--radius-full)', marginBottom: '1.5rem', boxShadow: 'var(--shadow-sm)' }}>
+              <span className="font-bold" style={{ color: 'var(--accent-primary)', fontSize: '0.875rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>IT Services & Solutions in Hosur</span>
             </div>
-            <h1 className="h1 mb-6 hero-title" style={{ maxWidth: '600px', color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
-              Your Trusted <span style={{ background: 'linear-gradient(135deg, #60A5FA, #3B82F6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Technology</span> Partner.
+            <h1 className="h1 mb-6 hero-title" style={{ maxWidth: '600px', color: 'var(--text-primary)' }}>
+              Your Trusted <span style={{ background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Technology</span> Partner.
             </h1>
-            <p className="mb-8 h4 hero-subtitle" style={{ maxWidth: '550px', fontWeight: 400, lineHeight: 1.6, color: '#CBD5E1' }}>
+            <p className="mb-8 h4 hero-subtitle" style={{ maxWidth: '550px', fontWeight: 400, lineHeight: 1.6, color: 'var(--text-secondary)' }}>
               From high-performance laptops and custom desktops to comprehensive CCTV security installations. We bring premium IT solutions directly to you.
             </p>
             <div className="hero-buttons">
-              <Link to="/category/laptops" className="btn btn-primary" style={{ padding: '1rem 2.5rem', justifyContent: 'center', fontSize: '1.125rem', boxShadow: '0 10px 25px rgba(26,99,165,0.4)', transition: 'all 0.3s ease' }}>Shop Now</Link>
-              <Link to="/contact" className="btn btn-hero-outline" style={{ display: 'inline-flex', alignItems: 'center', padding: '1rem 2.5rem', justifyContent: 'center', fontSize: '1.125rem', color: '#FFFFFF', border: '2px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(5px)', borderRadius: '9999px', transition: 'all 0.3s ease' }}>Get a Quote</Link>
+              <Link to="/category/laptops" className="btn btn-primary" style={{ padding: '1rem 2.5rem', justifyContent: 'center', fontSize: '1.125rem', transition: 'all 0.3s ease' }}>Shop Now</Link>
+              <Link to="/contact" className="btn btn-hero-outline" style={{ display: 'inline-flex', alignItems: 'center', padding: '1rem 2.5rem', justifyContent: 'center', fontSize: '1.125rem', color: 'var(--accent-primary)', border: '2px solid var(--accent-primary)', borderRadius: '9999px', transition: 'all 0.3s ease' }}>Get a Quote</Link>
             </div>
           </div>
 
           <div className="hero-image-container" style={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-            <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)', transform: 'perspective(1000px) rotateY(-5deg)', transition: 'transform 0.5s ease' }} className="hero-img-wrapper">
+            <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-xl)', border: '1px solid rgba(0,0,0,0.05)', transform: 'perspective(1000px) rotateY(-5deg)', transition: 'transform 0.5s ease' }} className="hero-img-wrapper">
               <img src={heroImage} alt="Premium Tech Devices" style={{ display: 'block', maxWidth: '100%', height: 'auto', objectFit: 'cover' }} />
               {/* Glass reflection overlay */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)', pointerEvents: 'none' }}></div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%)', pointerEvents: 'none' }}></div>
             </div>
           </div>
 
@@ -82,7 +82,7 @@ export default function Home() {
             { icon: <ShieldCheck size={48} color="var(--accent-secondary)" strokeWidth={1.5} />, title: 'Trusted Warranty', desc: 'All products come with official brand warranties. Plus, we handle the RMA process so you don\'t have to worry.' },
             { icon: <Wrench size={48} color="var(--accent-primary)" strokeWidth={1.5} />, title: 'Professional Setup', desc: 'From clean OS installations on new PCs to complete wiring and setup for multi-camera CCTV networks.' }
           ].map((feature, idx) => (
-            <div key={idx} className="card" style={{ padding: '2.5rem 2rem', textAlign: 'center', borderTop: `4px solid ${idx === 1 ? 'var(--accent-secondary)' : 'var(--accent-primary)'}` }}>
+            <div key={idx} className="card glass-panel" style={{ padding: '2.5rem 2rem', textAlign: 'center', borderTop: `4px solid ${idx === 1 ? 'var(--accent-secondary)' : 'var(--accent-primary)'}` }}>
               <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>{feature.icon}</div>
               <h3 className="h3 mb-3 text-primary-color">{feature.title}</h3>
               <p className="text-secondary">{feature.desc}</p>
@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="section-alt">
+      <section className="section-alt" style={{ background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-main))' }}>
         <div className="container">
           <div className="flex justify-between items-end mb-8">
             <div>
@@ -149,30 +149,32 @@ export default function Home() {
       </section>
       
       {/* CTA & Location Section */}
-      <section style={{ backgroundColor: 'var(--bg-main)', position: 'relative' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }} className="cta-flex">
-          
-          <div style={{ flex: '1 1 50%', backgroundColor: 'var(--accent-primary)', color: 'white', padding: '6rem 3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', width: '100%' }} className="cta-content">
-              <h2 className="h2 mb-6" style={{ color: 'white' }}>Ready to upgrade your tech?</h2>
-              <p className="h4 mb-8" style={{ fontWeight: 400, opacity: 0.9, lineHeight: 1.6 }}>
-                Visit our store at Thirumala Lodge, Fish Market, Bangalore By Pass Rd, Hosur, or call us directly.
-              </p>
-              
-              <div className="flex gap-4 flex-wrap mt-4 cta-buttons">
-                <a href="tel:07200040017" className="btn" style={{ backgroundColor: 'white', color: 'var(--accent-primary)', padding: '1rem 2rem', fontSize: '1.1rem', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-                  <Phone size={20} />
-                  Call 072000 40017
-                </a>
-                <Link to="/contact" className="btn" style={{ backgroundColor: 'var(--accent-secondary)', color: 'white', padding: '1rem 2rem', fontSize: '1.1rem', boxShadow: '0 4px 15px rgba(243, 112, 33, 0.3)' }}>Contact Support</Link>
+      <section className="section" style={{ backgroundColor: 'var(--bg-main)', position: 'relative' }}>
+        <div className="container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)', backgroundColor: 'var(--bg-secondary)' }} className="cta-flex">
+            
+            <div style={{ flex: '1 1 45%', minWidth: '300px', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.2)', padding: '4rem 3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ maxWidth: '600px', width: '100%' }} className="cta-content">
+                <h2 className="h2 mb-6 text-primary-color">Ready to upgrade your tech?</h2>
+                <p className="text-secondary mb-8 h4" style={{ fontWeight: 400, lineHeight: 1.6 }}>
+                  Visit our store at Thirumala Lodge, Fish Market, Bangalore By Pass Rd, Hosur, or call us directly.
+                </p>
+                
+                <div className="flex gap-4 flex-wrap mt-4 cta-buttons">
+                  <a href="tel:07200040017" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
+                    <Phone size={20} />
+                    Call 072000 40017
+                  </a>
+                  <Link to="/contact" className="btn btn-outline" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Contact Support</Link>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div style={{ flex: '1 1 50%', minHeight: '450px' }}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.675747146883!2d77.82774637507246!3d12.734563787559438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae71f5b6345311%3A0x99cc01cfb43d1142!2sBest%20Computer!5e0!3m2!1sen!2sin!4v1789194728512!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0, minHeight: '450px', filter: 'grayscale(0.2) contrast(1.1)' }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+            <div style={{ flex: '1 1 45%', minWidth: '300px', minHeight: '400px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.675747146883!2d77.82774637507246!3d12.734563787559438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae71f5b6345311%3A0x99cc01cfb43d1142!2sBest%20Computer!5e0!3m2!1sen!2sin!4v1789194728512!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0, minHeight: '400px', filter: 'grayscale(0.2) contrast(1.1)' }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
 
+          </div>
         </div>
       </section>
 
@@ -180,7 +182,7 @@ export default function Home() {
         .hover-scale:hover { transform: scale(1.05); }
         .hero-buttons { display: flex; gap: 1rem; }
         .hero-img-wrapper:hover { transform: perspective(1000px) rotateY(0deg) !important; }
-        .btn-hero-outline:hover { background-color: rgba(255,255,255,0.1); border-color: #FFFFFF; color: #FFFFFF; }
+        .btn-hero-outline:hover { background-color: var(--accent-primary); color: #FFFFFF !important; }
         @media (max-width: 768px) {
           .hero-flex { flex-direction: column; text-align: center; gap: 2rem !important; padding: 4rem 1.5rem !important; }
           .hero-buttons { flex-direction: column; width: 100%; }

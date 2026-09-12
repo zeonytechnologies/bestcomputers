@@ -98,7 +98,7 @@ export default function Contact() {
           
           {/* Contact Info & Map */}
           <div className="contact-info-col">
-            <div className="card" style={{ padding: '2.5rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div className="card glass-panel" style={{ padding: '2.5rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <h3 className="h2 mb-8 text-primary-color">Get in Touch</h3>
               
               <div className="grid-2" style={{ gap: '2rem', marginBottom: '2rem', gridTemplateColumns: '1fr 1fr' }}>
@@ -142,7 +142,7 @@ export default function Contact() {
 
           {/* Enquiry Form */}
           <div className="contact-form-col">
-            <div className="card" style={{ padding: '3rem 2.5rem', height: '100%' }}>
+            <div className="card glass-panel" style={{ padding: '3rem 2.5rem', height: '100%' }}>
               <h3 className="h3 mb-2 text-primary-color">Send an Enquiry</h3>
               <p className="text-secondary mb-8">Fill out the form below and our team will get back to you shortly.</p>
               
@@ -233,7 +233,7 @@ export default function Contact() {
               { q: 'Can I get a custom PC built for my specific needs?', a: 'Absolutely! Whether you need a workstation for 3D rendering or a high-end gaming PC, we can source the specific components you want and professionally assemble and test the system for you.' },
               { q: 'What is your warranty policy?', a: 'All products sold by Best Computers come with official brand warranties. We will assist you with the manufacturer RMA process should any hardware issues arise within the warranty period.' }
             ].map((faq, idx) => (
-              <div key={idx} className="card" style={{ padding: '1.5rem 2rem' }}>
+              <div key={idx} className="card glass-panel" style={{ padding: '1.5rem 2rem' }}>
                 <h4 className="h4 text-primary-color mb-2">{faq.q}</h4>
                 <p className="text-secondary">{faq.a}</p>
               </div>

@@ -12,7 +12,9 @@ export default function Layout() {
   return (
     <>
       <header style={{ 
-        backgroundColor: '#FFFFFF', 
+        background: 'rgba(255, 255, 255, 0.85)', 
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid var(--border-color)', 
         position: 'sticky', 
         top: 0, 
@@ -21,7 +23,7 @@ export default function Layout() {
       }}>
         <div className="container" style={{ padding: '1rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link to="/" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', zIndex: 110 }}>
-            <img src={logo} alt="Best Computers Logo" style={{ height: '40px', objectFit: 'contain' }} />
+            <img src={logo} alt="Best Computers Logo" style={{ height: '45px', objectFit: 'contain' }} />
           </Link>
           
           {/* Desktop Nav */}
@@ -51,19 +53,19 @@ export default function Layout() {
             top: '100%',
             left: 0,
             right: 0,
-            backgroundColor: '#FFFFFF',
+            background: 'var(--bg-main)',
             borderBottom: '1px solid var(--border-color)',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            boxShadow: 'var(--shadow-md)',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
             zIndex: 105
           }}>
-            <Link to="/" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid #f1f5f9' }}>Home</Link>
-            <Link to="/category/laptops" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid #f1f5f9' }}>Laptops</Link>
-            <Link to="/category/desktops" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid #f1f5f9' }}>Desktops</Link>
-            <Link to="/category/cctv" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid #f1f5f9' }}>CCTV Systems</Link>
+            <Link to="/" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)' }}>Home</Link>
+            <Link to="/category/laptops" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)' }}>Laptops</Link>
+            <Link to="/category/desktops" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)' }}>Desktops</Link>
+            <Link to="/category/cctv" onClick={closeMenu} style={{ padding: '0.5rem 0', fontWeight: 600, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)' }}>CCTV Systems</Link>
             <Link to="/contact" onClick={closeMenu} className="btn btn-primary" style={{ marginTop: '0.5rem', justifyContent: 'center' }}>Contact Us</Link>
           </div>
         )}
@@ -76,7 +78,7 @@ export default function Layout() {
       <footer style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', marginTop: '4rem' }}>
         <div className="container section grid-4">
           <div>
-            <img src={logo} alt="Best Computers Logo" style={{ height: '40px', objectFit: 'contain', marginBottom: '1.5rem' }} />
+            <img src={logo} alt="Best Computers Logo" style={{ height: '45px', objectFit: 'contain', marginBottom: '1.5rem' }} />
             <p className="text-secondary mb-4" style={{ fontSize: '0.95rem' }}>
               Your trusted IT partner in Hosur. We provide top-tier Laptops, Custom Desktops, and Professional CCTV solutions for home and business.
             </p>

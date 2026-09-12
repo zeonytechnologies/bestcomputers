@@ -59,11 +59,11 @@ export default function ProductDetail() {
         <span className="text-primary-color font-bold">{product.name}</span>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
         
         {/* Image Gallery */}
-        <div style={{ flex: '1 1 450px' }}>
-          <div className="card" style={{ padding: '2rem', backgroundColor: '#FFFFFF', marginBottom: '1rem', border: '1px solid var(--border-color)' }}>
+        <div style={{ flex: '1 1 300px', maxWidth: '100%' }}>
+          <div className="card glass-panel" style={{ padding: '2rem', marginBottom: '1rem', border: '1px solid var(--border-color)' }}>
             <div style={{ position: 'relative', paddingTop: '75%' }}>
               <img 
                 src={mainImage || 'https://via.placeholder.com/600x450?text=No+Image'} 
@@ -93,7 +93,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Product Info */}
-        <div style={{ flex: '1 1 450px' }}>
+        <div style={{ flex: '1 1 350px', maxWidth: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
             <div>
               <p className="font-bold text-secondary-color" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.875rem', marginBottom: '0.5rem' }}>

@@ -170,29 +170,45 @@ export default function Category() {
             <p className="text-muted mt-4 font-bold">Loading catalog...</p>
           </div>
         ) : filteredProducts.length > 0 ? (
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 }
-            }}
-            autoplay={{ delay: 0, disableOnInteraction: false }}
-            speed={5000}
-            loop={true}
-            freeMode={true}
-            allowTouchMove={true}
-            modules={[Autoplay, FreeMode]}
-            className="continuous-slider"
-            style={{ paddingBottom: '3rem' }}
-          >
-            {filteredProducts.map(product => (
-              <SwiperSlide key={product.id} style={{ height: 'auto' }}>
-                <ProductCard product={product} onClick={openModal} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <>
+            {/* Moving Carousel */}
+            <div style={{ marginBottom: '4rem' }}>
+              <h3 className="h3 text-primary-color mb-6">Featured {categoryName || slug}</h3>
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1}
+                breakpoints={{
+                  640: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                  1280: { slidesPerView: 4 }
+                }}
+                autoplay={{ delay: 0, disableOnInteraction: false }}
+                speed={5000}
+                loop={filteredProducts.length > 4}
+                freeMode={true}
+                allowTouchMove={true}
+                modules={[Autoplay, FreeMode]}
+                className="continuous-slider"
+                style={{ paddingBottom: '3rem' }}
+              >
+                {filteredProducts.map(product => (
+                  <SwiperSlide key={`featured-${product.id}`} style={{ height: 'auto' }}>
+                    <ProductCard product={product} onClick={openModal} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* All Products Listing */}
+            <div>
+              <h3 className="h3 text-primary-color mb-6">Browse All Products</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
+                {filteredProducts.map(product => (
+                  <ProductCard key={`grid-${product.id}`} product={product} onClick={openModal} />
+                ))}
+              </div>
+            </div>
+          </>
         ) : (
           <div className="card glass-panel" style={{ padding: '6rem 2rem', textAlign: 'center' }}>
             <div style={{ fontSize: '4rem', marginBottom: '1rem', opacity: 0.5 }}>📦</div>

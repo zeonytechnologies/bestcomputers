@@ -53,50 +53,46 @@ export default function Home() {
           <div className="flex justify-between items-end mb-8">
             <div>
               <h2 className="h2 text-primary-color">Our Product Range</h2>
-              <p className="text-secondary mt-2">Explore our extensive catalog of genuine IT hardware.</p>
+              <p className="text-secondary mt-2" style={{ fontSize: '1.1rem' }}>Explore our premium catalog of genuine IT hardware.</p>
             </div>
           </div>
           
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 }
-            }}
-            autoplay={{ delay: 0, disableOnInteraction: false }}
-            speed={5000}
-            loop={true}
-            freeMode={true}
-            modules={[Autoplay, FreeMode]}
-            className="category-swiper continuous-slider"
-            style={{ paddingBottom: '3rem' }}
-          >
+          <div className="categories-grid">
             {[
-              { title: 'Laptops', slug: 'laptops', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800' },
-              { title: 'Desktops', slug: 'desktops', img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=800' },
-              { title: 'CCTV Systems', slug: 'cctv', img: '/cctv-category.jpg' }
+              { 
+                title: 'Premium Laptops', 
+                slug: 'laptops', 
+                img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1200' 
+              },
+              { 
+                title: 'Custom Desktops', 
+                slug: 'desktops', 
+                img: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&q=80&w=1200' 
+              },
+              { 
+                title: 'CCTV Security', 
+                slug: 'cctv', 
+                img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1200' 
+              }
             ].map((cat) => (
-              <SwiperSlide key={cat.slug}>
-                <Link to={`/category/${cat.slug}`} className="card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', height: '300px', position: 'relative' }}>
-                  <img 
-                    src={cat.img} 
-                    alt={cat.title} 
-                    onError={(e) => {
-                      if (cat.slug === 'cctv') {
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=800';
-                      }
-                    }}
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: 'var(--bg-secondary)' }} 
-                    className="hover-scale" 
-                  />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-                    <h3 className="h3" style={{ color: 'white', marginBottom: 0 }}>{cat.title}</h3>
+              <Link to={`/category/${cat.slug}`} key={cat.slug} className="category-card" style={{ display: 'block', position: 'relative', overflow: 'hidden', borderRadius: '1.25rem', height: '350px', boxShadow: 'var(--shadow-md)', transition: 'all 0.4s ease' }}>
+                <img 
+                  src={cat.img} 
+                  alt={cat.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)' }} 
+                  className="category-img" 
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, rgba(15, 23, 42, 0) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '2rem', transition: 'all 0.4s ease' }} className="category-overlay">
+                  <h3 className="h2" style={{ color: 'white', marginBottom: '0.5rem', fontWeight: 'bold', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>{cat.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', marginBottom: '1.5rem', lineHeight: '1.4', maxWidth: '400px' }} className="category-subtitle">{cat.subtitle}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 'bold', fontSize: '1.1rem' }}>
+                    <span>Explore Products</span>
+                    <ArrowRight size={20} className="explore-arrow" style={{ transition: 'transform 0.3s ease' }} />
                   </div>
-                </Link>
-              </SwiperSlide>
+                </div>
+              </Link>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
@@ -270,6 +266,15 @@ export default function Home() {
         .btn-hero-outline:hover { background-color: var(--accent-primary); color: #FFFFFF !important; }
         .swiper-pagination-bullet-active { background: var(--accent-primary) !important; }
         .swiper-button-next, .swiper-button-prev { color: var(--accent-primary) !important; }
+        
+        .categories-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 640px) {
+          .categories-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1); }
+        .category-card:hover .category-img { transform: scale(1.05); }
+        .category-card:hover .explore-arrow { transform: translateX(8px); }
+
         @media (max-width: 768px) {
           .hero-flex { flex-direction: column; text-align: center; gap: 2rem !important; padding: 4rem 1.5rem !important; }
           .hero-buttons { flex-direction: column; width: 100%; }

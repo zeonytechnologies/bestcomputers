@@ -12,17 +12,16 @@ export default function ProductCard({ product, onClick }) {
 
   return (
     <div 
-      className="card flex-col product-card-hover" 
-      style={{ display: 'flex', cursor: 'pointer', aspectRatio: '1 / 1', width: '100%', position: 'relative', overflow: 'hidden', borderRadius: '1rem', backgroundColor: 'var(--bg-main)', boxShadow: 'var(--shadow-sm)', transition: 'all 0.3s ease', padding: 0 }}
+      className="card flex-col product-card-hover product-card-responsive" 
+      style={{ display: 'flex', cursor: 'pointer', position: 'relative', overflow: 'hidden', borderRadius: '1rem', backgroundColor: 'var(--bg-main)', boxShadow: 'var(--shadow-sm)', transition: 'all 0.3s ease', padding: 0 }}
       onClick={() => onClick && onClick(product)}
     >
-      <div style={{ position: 'relative', height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="product-image-container">
         {hasMultipleImages ? (
           <Swiper
             pagination={{ clickable: true }}
             modules={[Pagination]}
             className="product-image-swiper"
-            style={{ width: '100%', height: '100%' }}
             nested={true}
           >
             {product.images.map((img, idx) => (
@@ -30,7 +29,6 @@ export default function ProductCard({ product, onClick }) {
                 <img 
                   src={img} 
                   alt={`${product.name} - View ${idx + 1}`} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }}
                   className="product-img"
                 />
               </SwiperSlide>
@@ -40,7 +38,6 @@ export default function ProductCard({ product, onClick }) {
           <img 
             src={singleImage} 
             alt={product.name} 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }}
             className="product-img"
           />
         )}
@@ -66,6 +63,20 @@ export default function ProductCard({ product, onClick }) {
         .product-card-hover:hover .product-img { transform: scale(1.05); }
         .product-image-swiper .swiper-pagination-bullet { background: rgba(255,255,255,0.6); }
         .product-image-swiper .swiper-pagination-bullet-active { background: white; }
+
+        /* Mobile layout: fit to image */
+        .product-card-responsive { height: auto; aspect-ratio: auto; }
+        .product-image-container { position: relative; width: 100%; height: auto; display: flex; align-items: center; justify-content: center; }
+        .product-image-swiper { width: 100%; height: auto; }
+        .product-img { width: 100%; height: auto; object-fit: contain; display: block; transition: transform 0.4s ease; mix-blend-mode: multiply; }
+        
+        /* Desktop layout: square */
+        @media (min-width: 768px) {
+          .product-card-responsive { aspect-ratio: 1 / 1; }
+          .product-image-container { position: absolute; inset: 0; height: 100%; }
+          .product-image-swiper { height: 100%; }
+          .product-img { height: 100%; object-fit: cover; }
+        }
       `}} />
     </div>
   );

@@ -46,7 +46,12 @@ export default function ProductCard({ product, onClick }) {
       {/* Hover Overlay */}
       <div className="product-details-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, rgba(15, 23, 42, 0.4) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1.5rem', opacity: 0, transition: 'all 0.3s ease', transform: 'translateY(20px)', pointerEvents: 'none', zIndex: 10 }}>
         {product.brand && <span style={{ color: 'var(--accent-secondary)', fontSize: '0.85rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>{product.brand}</span>}
-        <h3 className="h4" style={{ color: 'white', marginBottom: '0.75rem', lineHeight: '1.2' }}>{product.name}</h3>
+        <h3 className="h4" style={{ color: 'white', marginBottom: '0.5rem', lineHeight: '1.2' }}>{product.name}</h3>
+        {product.price && (
+          <div style={{ color: '#25D366', fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '0.75rem' }}>
+            ₹{product.price.toLocaleString()}
+          </div>
+        )}
         {product.description && (
           <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', marginBottom: '1rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
             {product.description}

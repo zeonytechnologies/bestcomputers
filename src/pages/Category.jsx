@@ -242,6 +242,11 @@ export default function Category() {
                 <div>
                   <p className="font-bold" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-secondary)' }}>{selectedProduct.brand}</p>
                   <h3 className="h4 text-primary-color mt-1" style={{ lineHeight: 1.3 }}>{selectedProduct.name}</h3>
+                  {selectedProduct.price && (
+                    <div style={{ color: '#25D366', fontWeight: 'bold', fontSize: '1.1rem', marginTop: '0.5rem' }}>
+                      ₹{selectedProduct.price.toLocaleString()}
+                    </div>
+                  )}
                 </div>
               </div>
 

@@ -10,7 +10,7 @@ export default function ProductsManager() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
-    name: '', brand: '', category_id: ''
+    name: '', brand: '', category_id: '', price: ''
   });
   const [uploading, setUploading] = useState(false);
   const [images, setImages] = useState([]);
@@ -42,13 +42,13 @@ export default function ProductsManager() {
     if (product) {
       setEditingId(product.id);
       setFormData({
-        name: product.name, brand: product.brand || '', category_id: product.category_id
+        name: product.name, brand: product.brand || '', category_id: product.category_id, price: product.price || ''
       });
       setImages(product.images || []);
     } else {
       setEditingId(null);
       setFormData({
-        name: '', brand: '', category_id: categories[0]?.id || ''
+        name: '', brand: '', category_id: categories[0]?.id || '', price: ''
       });
       setImages([]);
     }
@@ -96,6 +96,7 @@ export default function ProductsManager() {
         name: formData.name,
         brand: formData.brand,
         category_id: formData.category_id,
+        price: formData.price ? parseFloat(formData.price) : null,
         images: images
       };
 
@@ -153,6 +154,10 @@ export default function ProductsManager() {
                 <label className="input-label">Brand</label>
                 <input className="input-field" value={formData.brand} onChange={e => setFormData({...formData, brand: e.target.value})} />
               </div>
+              <div className="input-group">
+                <label className="input-label">Price (₹)</label>
+                <input type="number" step="0.01" className="input-field" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} placeholder="e.g. 45000" />
+              </div>
             </div>
 
             <h3 className="h3 mt-6 mb-4">Product Image</h3>
@@ -193,13 +198,14 @@ export default function ProductsManager() {
                     <th style={{ width: '60px' }}>Image</th>
                     <th>Name</th>
                     <th>Brand</th>
+                    <th>Price</th>
                     <th>Category</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {products.length === 0 ? (
-                    <tr><td colSpan="5" className="text-center text-muted" style={{ padding: '2rem' }}>No products found.</td></tr>
+                    <tr><td colSpan="6" className="text-center text-muted" style={{ padding: '2rem' }}>No products found.</td></tr>
                   ) : (
                     products.map(p => (
                       <tr key={p.id}>
@@ -212,6 +218,7 @@ export default function ProductsManager() {
                         </td>
                         <td className="font-medium">{p.name}</td>
                         <td>{p.brand || '-'}</td>
+                        <td>{p.price ? `₹${p.price.toLocaleString()}` : '-'}</td>
                         <td>{p.category?.name}</td>
                         <td>
                           <div className="flex gap-2">
